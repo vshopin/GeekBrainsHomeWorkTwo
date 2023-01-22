@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 public class Robot implements Contributor {
-
   private String name;
   private int maxJump;
   private int maxRunLength;

@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 public class Human implements Contributor {
-
   private String name;
   private int maxJump;
   private int maxRunLength;
