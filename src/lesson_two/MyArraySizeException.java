@@ -1,7 +1,7 @@
 package lesson_two;
 
 public class MyArraySizeException extends Exception {
-  public MyArraySizeException() {
-    System.out.println("Превышена длина массива");
+  public MyArraySizeException(int length) {
+    System.out.printf("Превышена длина массива, допускается массив длинной 4. Текущаяя длинна массива %d",length);
   }
 }
