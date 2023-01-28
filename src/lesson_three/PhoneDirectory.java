@@ -3,7 +3,6 @@ package lesson_three;
 import java.util.HashMap;
 
 public class PhoneDirectory {
-
   private static HashMap<String, String> phoneDirectory = new HashMap<>();
 
   private static void add(String lastName, String phone) {
