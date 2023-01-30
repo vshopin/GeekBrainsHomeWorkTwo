@@ -3,13 +3,9 @@ package lesson_three;
 import java.util.HashMap;
 
 public class PhoneDirectory {
-  private static HashMap<String, String> phoneDirectory = new HashMap<>();
+  private HashMap<String, String> phoneDirectory = new HashMap<>();
 
-  private static void add(String lastName, String phone) {
-    phoneDirectory.put(phone, lastName);
-  }
-
-  private static void get(String lastName) {
+  private void get(String lastName) {
     for (String key : phoneDirectory.keySet()) {
       if (phoneDirectory.get(key).equals(lastName)) {
         System.out.println(phoneDirectory.get(key) + " - " + key);
@@ -18,17 +14,18 @@ public class PhoneDirectory {
   }
 
   public static void main(String[] args) {
-    add("Ivanov", "89137775530");
-    add("Petrov", "89137775531");
-    add("Sidorov", "89137775532");
-    add("Govnov", "89137775533");
-    add("Pidorov", "89137775534");
-    add("Huidorov", "89137775535");
-    add("Ivanov", "89137775536");
-    add("Petrov", "89137775537");
-    get("Ivanov");
-    get("Petrov");
-    get("Govnov");
+    PhoneDirectory phoneDirectory = new PhoneDirectory();
+    phoneDirectory.phoneDirectory.put("Ivanov", "89137775530");
+    phoneDirectory.phoneDirectory.put("Petrov", "89137775531");
+    phoneDirectory.phoneDirectory.put("Sidorov", "89137775532");
+    phoneDirectory.phoneDirectory.put("Govnov", "89137775533");
+    phoneDirectory.phoneDirectory.put("Pidorov", "89137775534");
+    phoneDirectory.phoneDirectory.put("Huidorov", "89137775535");
+    phoneDirectory.phoneDirectory.put("Ivanov", "89137775536");
+    phoneDirectory.phoneDirectory.put("Petrov", "89137775537");
+    phoneDirectory.phoneDirectory.get("Ivanov");
+    phoneDirectory.phoneDirectory.get("Petrov");
+    phoneDirectory.phoneDirectory.get("Govnov");
   }
 
 }
