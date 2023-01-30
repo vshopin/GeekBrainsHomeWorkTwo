@@ -1,13 +1,13 @@
 package lesson_three;
 
+import lombok.Getter;
+
 import java.util.HashMap;
 
 public class PhoneDirectory {
+  @Getter
   private HashMap<String, String> phoneDirectory = new HashMap<>();
 
-  public HashMap<String, String> getPhoneDirectory() {
-    return phoneDirectory;
-  }
   private void get(String lastName) {
     for (String key : phoneDirectory.keySet()) {
       if (phoneDirectory.get(key).equals(lastName)) {
@@ -15,6 +15,7 @@ public class PhoneDirectory {
       }
     }
   }
+
   public static void main(String[] args) {
     var directory = new PhoneDirectory();
     directory.phoneDirectory.put("89137775530", "Ivanov");
@@ -28,6 +29,7 @@ public class PhoneDirectory {
     directory.get("Ivanov");
     directory.get("Petrov");
     directory.get("Govnov");
+    System.out.println(directory.getPhoneDirectory());
   }
 
 }
