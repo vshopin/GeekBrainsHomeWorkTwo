@@ -11,7 +11,6 @@ public class MyThreads {
   static final int size = 10000000;
   static final int h = size / 2;
 
-
   public void createArray() {
     var arr = new float[size];
     Arrays.fill(arr, 1);
@@ -51,15 +50,12 @@ public class MyThreads {
     try {
       threadOne.join();
     } catch (InterruptedException e) {
-      log.log(Level.WARNING, "Прервался поток" + threadOne.getName(), e);
-      System.out.println("Прервался первый поток");
-      e.printStackTrace();
+      log.log(Level.WARNING, "Прервался поток" + threadOne.getName(), e.getMessage());
     }
     try {
       threadTwo.join();
     } catch (InterruptedException e) {
-      log.log(Level.WARNING, "Прервался поток" + threadTwo.getName(), e);
-      e.printStackTrace();
+      log.log(Level.WARNING, "Прервался поток" + threadTwo.getName(), e.getMessage());
     }
     System.out.printf("Two thread time: %d ms.\n", System.currentTimeMillis() - startTime);
   }
