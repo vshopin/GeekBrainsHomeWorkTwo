@@ -26,28 +26,36 @@ public class MyThreads {
     System.arraycopy(arr, 0, arrOne, 0, h);
     System.arraycopy(arr, h, arrTwo, 0, h);
 
-    Thread threadOne = new Thread(() -> {
+    var threadOne = new Thread(() -> {
       for (int i = 0; i < arrOne.length; i++) {
         arrOne[i] = (float) (arrOne[i] * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
       }
       System.arraycopy(arrOne, 0, arr, 0, h);
     });
-    Thread threadTwo = new Thread(() -> {
+    var threadTwo = new Thread(() -> {
       for (int i = 0; i < arrTwo.length; i++) {
         arrTwo[i] = (float) (arrTwo[i] * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
       }
       System.arraycopy(arrTwo, 0, arr, h, h);
     });
 
+
+    threadOne.start();
+    threadTwo.start();
     try {
-      threadOne.start();
-      threadTwo.start();
       threadOne.join();
-      threadTwo.join();
-      System.out.printf("Two thread time: %d ms.\n", System.currentTimeMillis() - startTime);
     } catch (InterruptedException e) {
+      System.out.println("Прервался первый поток");
       e.printStackTrace();
     }
+    try {
+      threadTwo.join();
+    } catch (InterruptedException e) {
+      System.out.println("Прервался второй поток");
+      e.printStackTrace();
+    }
+    System.out.printf("Two thread time: %d ms.\n", System.currentTimeMillis() - startTime);
+
 
   }
 }
