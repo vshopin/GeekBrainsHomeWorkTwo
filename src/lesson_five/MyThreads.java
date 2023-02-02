@@ -1,10 +1,16 @@
 package lesson_five;
 
-import java.util.Arrays;
 
+import lombok.extern.java.Log;
+import java.util.Arrays;
+import java.util.logging.Level;
+
+
+@Log
 public class MyThreads {
   static final int size = 10000000;
   static final int h = size / 2;
+
 
   public void createArray() {
     var arr = new float[size];
@@ -45,17 +51,16 @@ public class MyThreads {
     try {
       threadOne.join();
     } catch (InterruptedException e) {
+      log.log(Level.WARNING, "Прервался поток" + threadOne.getName(), e);
       System.out.println("Прервался первый поток");
       e.printStackTrace();
     }
     try {
       threadTwo.join();
     } catch (InterruptedException e) {
-      System.out.println("Прервался второй поток");
+      log.log(Level.WARNING, "Прервался поток" + threadTwo.getName(), e);
       e.printStackTrace();
     }
     System.out.printf("Two thread time: %d ms.\n", System.currentTimeMillis() - startTime);
-
-
   }
 }
